@@ -1,49 +1,62 @@
 pipeline {
     agent any
-    
+
+    environment {
+        // Define the global environment variables
+        MAVEN_HOME = '/usr/local/maven'
+    }
+
     stages {
         stage('Build') {
             steps {
-                // Build the code using Maven or another build automation tool
-                echo "Build Stage"
+                echo 'Building the application using Maven'
             }
         }
+        
         stage('Unit and Integration Tests') {
             steps {
-                // Run unit tests using JUnit or another test automation tool
-                // Run integration tests using Selenium or another integration testing tool
-                echo "Testing Stage"
+                echo 'Running unit tests'
+                echo 'Running integration tests'
             }
         }
+
         stage('Code Analysis') {
             steps {
-                // Integrate a code analysis tool like SonarQube or Checkstyle
-                echo "Code Analysis Stage"
+                echo 'Analyzing the code with SonarQube'
             }
         }
+
         stage('Security Scan') {
             steps {
-                // Perform a security scan using tools like OWASP ZAP or SonarQube
-                echo "Security Stage"
+                echo 'Performing security scan with OWASP ZAP'
             }
         }
+
         stage('Deploy to Staging') {
             steps {
-                // Deploy the application to a staging server, e.g., AWS EC2 instance
-                echo "Deployment Stage"
+                echo 'Deploying to AWS EC2 Staging Environment'
             }
         }
+
         stage('Integration Tests on Staging') {
             steps {
-                // Run integration tests on the staging environment
-                echo "Integration Stage"
+                echo 'Running integration tests on staging environment'
             }
         }
+
         stage('Deploy to Production') {
             steps {
-                // Deploy the application to a production server, e.g., AWS EC2 instance
-                echo "Production Stage"
+                echo 'Deploying to AWS EC2 Production Environment'
             }
+        }
+    }
+
+    post {
+        success {
+            echo 'Pipeline executed successfully!'
+        }
+        failure {
+            echo 'Pipeline failed.'
         }
     }
 }
