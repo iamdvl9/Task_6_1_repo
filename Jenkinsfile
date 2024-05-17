@@ -57,7 +57,7 @@ pipeline {
             emailext body:'All stages completed.',
                      subject: 'Pipeline status Successful',
                      to:'dvltalaviya9@gmail.com',
-                     attachmentsPattern: '**/*.log'
+                     attachmentsPattern: '*.log'
 
         }
         failure {
@@ -65,7 +65,7 @@ pipeline {
             emailext body:'Pipeline failed.',
                      subject: 'Pipeline status Failure',
                      to:'dvltalaviya9@gmail.com',
-                     attachmentsPattern: '**/*.log'
+                     attachmentsPattern: '*.log'
 
         }
     }
